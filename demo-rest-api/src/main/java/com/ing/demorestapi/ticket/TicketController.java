@@ -3,6 +3,7 @@ package com.ing.demorestapi.ticket;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class TicketController {
 
     // create new ticket - POST
     @PostMapping("")
-    public ResponseEntity<Long> createTicket(@RequestBody Ticket ticket) {
+    public ResponseEntity<Long> createTicket(@RequestBody @Valid Ticket ticket) {
         Ticket ticket1 = ticket;
         ticket1.setId(42L);
         System.out.println(ticket);
