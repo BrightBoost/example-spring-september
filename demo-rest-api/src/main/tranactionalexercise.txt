@@ -1,0 +1,6 @@
+- Make the service methods in your endpoints transactional
+- Test every method and the rollback capabilities and see if you need to make changes to it
+- Throw a runtime exception in the update method when the name is shorter than 2 characters
+- Throw a checked exception in the put method if the age is not set, specify that you don’t need to rollback for this exception
+- Bonus: what happens to your many to many objects? Are they rolled back as well?
+- Bonus: how does Spring implement transactional methods under the hood?

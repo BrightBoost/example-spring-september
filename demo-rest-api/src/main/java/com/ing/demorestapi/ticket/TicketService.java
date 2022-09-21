@@ -3,6 +3,8 @@ package com.ing.demorestapi.ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,4 +39,15 @@ public class TicketService {
     }
 
     // leave implementation for put and delete for now
+    @Transactional(dontRollbackOn = {IllegalArgumentException.class})
+    public Ticket updateTicket(Ticket t) throws Exception {
+        Ticket ticket = repository.findById(t.getId()).get();
+        ticket.setName(t.getName());
+        ticket.setEventDate(t.getEventDate());
+        if(t.getPrice() < 0) {
+            throw new Exception();
+        }
+        ticket.setPrice(t.getPrice());
+        return ticket;
+    }
 }

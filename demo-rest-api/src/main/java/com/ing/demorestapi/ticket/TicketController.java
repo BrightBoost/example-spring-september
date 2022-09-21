@@ -40,6 +40,12 @@ public class TicketController {
     }
 
     // edit a ticket - PUT
+    @PutMapping("")
+    public ResponseEntity<Ticket> editTicket(@RequestBody Ticket ticket) throws Exception {
+        Ticket updateTicket = service.updateTicket(ticket);
+        return ResponseEntity.of(Optional.of(updateTicket));
+    }
+
 
     // delete - DELETE
 
