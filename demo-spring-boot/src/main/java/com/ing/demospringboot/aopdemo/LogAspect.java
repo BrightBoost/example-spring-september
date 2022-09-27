@@ -2,6 +2,7 @@ package com.ing.demospringboot.aopdemo;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -17,6 +18,12 @@ public class LogAspect {
         Object proceed = proceedingJoinPoint.proceed();
         System.out.println("Bye!");
         return proceed;
+    }
+
+    @AfterThrowing(value = "@annotation(LogStuff)", throwing = "e")
+    public void logException(JoinPoint joinPoint, Exception e) {
+        System.out.println(joinPoint.getSignature() + " was called");
+        System.out.println(e.getClass() + " was thrown");
     }
 
     @Before("@annotation(LogStuff)")

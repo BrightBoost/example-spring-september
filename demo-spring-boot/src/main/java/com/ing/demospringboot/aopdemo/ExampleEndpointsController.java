@@ -10,5 +10,11 @@ public class ExampleEndpointsController {
     @GetMapping("test-aop")
     public void testAOP() {
         System.out.println("in the method");
+        //try {
+            throw new RuntimeException("oh no");
+
+//        } catch(RuntimeException e) {
+//            System.out.println("don't catch runtime exceptions...");
+//        }
     }
 }
