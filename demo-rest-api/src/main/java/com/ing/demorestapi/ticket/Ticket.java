@@ -1,10 +1,10 @@
 package com.ing.demorestapi.ticket;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.ing.demorestapi.person.Person;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -17,6 +17,11 @@ public class Ticket {
     private String name;
     private LocalDate eventDate;
     private double price;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="person_id", referencedColumnName = "strid")
+    @JsonBackReference
+    private Person person;
+
 
     public Long getId() {
         return id;
