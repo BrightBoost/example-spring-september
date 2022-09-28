@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ExampleControllerWithSecurity {
 
+
     @GetMapping("secure-get")
     public void secureEndpoint() {
         System.out.println("very secure");
