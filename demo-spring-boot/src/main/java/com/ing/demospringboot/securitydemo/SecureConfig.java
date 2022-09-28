@@ -19,19 +19,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecureConfig {
 
-    @Bean
-    public SecurityFilterChain customFilterChain(HttpSecurity http) throws Exception {
-            http
-                    .authorizeHttpRequests()
-                    .antMatchers("/test-aop")
-                    .permitAll()
-                    .antMatchers("/secure-get")
-                    .hasRole("ADMIN")
-                    .and()
-                    .formLogin();
-
-            return http.build();
-    }
+//    @Bean
+//    public SecurityFilterChain customFilterChain(HttpSecurity http) throws Exception {
+//            http
+//                    .authorizeHttpRequests()
+//                    .antMatchers("/test-aop")
+//                    .permitAll()
+//                    .antMatchers("/secure-get")
+//                    .hasRole("ADMIN")
+//                    .and()
+//                    .formLogin();
+//
+//            return http.build();
+//    }
 
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(AuthenticationManagerBuilder auth) throws Exception {
@@ -41,7 +41,14 @@ public class SecureConfig {
                 .password("password")
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(user);
+
+        UserDetails user2 = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("password")
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(user, user2);
 
     }
 }
