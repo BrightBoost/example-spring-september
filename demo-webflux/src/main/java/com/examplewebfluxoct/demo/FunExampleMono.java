@@ -2,8 +2,6 @@ package com.examplewebfluxoct.demo;
 
 import reactor.core.publisher.Mono;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 public class FunExampleMono {
     public static void main(String[] args)throws InterruptedException {
