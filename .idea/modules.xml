@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/demo-webflux/demo.iml" filepath="$PROJECT_DIR$/demo-webflux/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-spring-boot/demo-spring-boot.iml" filepath="$PROJECT_DIR$/demo-spring-boot/demo-spring-boot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/example-spring-september.iml" filepath="$PROJECT_DIR$/.idea/example-spring-september.iml" />
     </modules>
